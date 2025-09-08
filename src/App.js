@@ -31,10 +31,20 @@ const App = () => {
     
   };
 
-  const ResultPanel = props => {
+  const ResultPanel = (props) => {
+    
+    const additionalInformation = counter >= 15 ? (
+      <p>
+        You clicked more than 15 times!
+        It's time to reset the counter!
+        <button onClick={() => handleMathClick("reset", "")}>Reset</button>
+      </p>
+      
+    ) : null;
+    
     return (
       <div>
-        <h2>Counter click: {counter}</h2>
+        <h2>Counter click: {counter}. {additionalInformation} </h2>
         <h2>Result: {result}</h2>
       </div>
     );
@@ -47,7 +57,7 @@ const App = () => {
     );
   };
 
-  const Counter = props => {
+  const Counter = ({ result }) => {
     return (
       <div className="counter">
         <h1>React Counter</h1>
